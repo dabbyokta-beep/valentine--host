@@ -1,14 +1,20 @@
-function openHeart() {
+let step = 0;
+
+function startBook() {
   document.querySelector('.landing').style.display = 'none';
-  document.querySelector('.content').style.display = 'block';
-}
+  document.querySelector('.scene').style.display = 'flex';
 
-function toggleMusic() {
   const music = document.getElementById('music');
-  music.paused ? music.play() : music.pause();
+  music.play();
+
+  document.querySelector('.book').addEventListener('click', flipPage);
 }
 
-function openLetter(card) {
-  card.querySelector('.letter-closed').classList.add('hidden');
-  card.querySelector('.letter-open').classList.remove('hidden');
+function flipPage() {
+  const pages = document.querySelectorAll('.page');
+
+  if (step < pages.length) {
+    pages[step].classList.add('flipped');
+    step++;
+  }
 }
